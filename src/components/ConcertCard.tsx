@@ -7,20 +7,27 @@ function ConcertCard({ concert }) {
   const timeLabel = concertDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
 
   return (
-    <article className="concert-row">
-      <span className="concert-row-date">
+    <article className="flex flex-wrap items-center justify-between gap-6 border-b border-white/15 py-[1.4rem] md:flex-nowrap">
+      <span className="min-w-[9rem] text-[0.8rem] uppercase tracking-[0.1em] text-text-soft">
         {dateLabel} - {timeLabel}
       </span>
 
-      <div className="concert-row-info">
-        <h3>{concert.salle}</h3>
+      <div className="flex-1">
+        <h3 className="text-[1.25rem] tracking-[0.04em]">{concert.salle}</h3>
         <p>{concert.ville}</p>
       </div>
 
       {concert.complet ? (
-        <span className="badge full">Complet</span>
+        <span className="inline-flex items-center rounded-full bg-accent/12 px-[0.7rem] py-[0.34rem] text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent">
+          Complet
+        </span>
       ) : concert.url_billetterie ? (
-        <a className="card-btn" href={concert.url_billetterie} target="_blank" rel="noreferrer">
+        <a
+          className="inline-flex w-fit items-center justify-center rounded-full border border-white/[0.12] bg-white/5 px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px"
+          href={concert.url_billetterie}
+          target="_blank"
+          rel="noreferrer"
+        >
           Tickets
         </a>
       ) : null}

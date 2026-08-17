@@ -1,16 +1,17 @@
 // Données biographiques et visuelles, faciles à modifier sans toucher au layout.
-export const bandBio = {
-  photo:
-    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-  text: `
-    Mezcal in Cactus est un groupe de psyché-rock qui mélange riffs lourds,
-    grooves hypnotiques et mélodies envoûtantes. Au fil des années, le trio a
-    construit une identité sonore entre paysages désertiques, funk tropical,
-    esprit garage et folklore onirique.
+import bandPhoto from '../assets/band-1.jpg'
 
-    Sur scène, ils explorent des morceaux hypnotiques, des improvisations
-    lunaires et une énergie live qui mélange chaleur humaine et délire visuel.
-    Leurs compositions évoquent le voyage, la transe, les lumières de la nuit
-    et l’éternel besoin de danser jusqu’au bout de la poussière.
+export const bandBio = {
+  photo: bandPhoto,
+  text: `
+   Mezcal in Cactus voit le jour en 2021 à Lyon (France), lorsque les musiciens
+  rentrent de longs mois de voyage.
+
+  Après 2 ans passés à jammer, composer et perfectionner leur style, Neblina, leur premier album, voit le jour. Fruit de cette longue maturation, l’album aux sonorités psychédéliques et aux multiples inspirations sort en 2023.
+
+  Bien décidé à aller plus loin dans le recherche de sonorités toujours plus
+  abouties, le groupe n’en reste pas là et se remet à composer très rapidement un
+  deuxième album  — Agave & Peyotl  — enregistré en septembre 2025 à Lyon, et prévu pour octobre 2026.
+  Sur scène comme en studio, le groupe navigue sans frontières entre rock, krautrock, pop, stoner, jazz et rock progressif — une palette large, toujours unifiée par une esthétique et un son résolument psychédélique.
   `,
 }

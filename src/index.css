@@ -1,25 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-:root {
-  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+@theme {
+  --font-display: 'Montserrat', 'Segoe UI', sans-serif;
+
   --color-bg: #140d24;
-  --color-bg-2: #2f144d;
-  --color-panel: rgba(18, 15, 33, 0.7);
-  --color-panel-strong: rgba(9, 7, 18, 0.9);
+  --color-panel: #120f21;
   --color-text: #fdf4ff;
   --color-text-soft: #d9c8ff;
   --color-accent: #ff5fd2;
   --color-accent-2: #ffb703;
   --color-accent-3: #38f0d1;
-  --color-accent-4: #7c5cff;
-  --color-line: rgba(255, 255, 255, 0.15);
+
+  --radius-panel: 22px;
+
   --shadow-soft: 0 24px 60px rgba(18, 8, 35, 0.45);
-  --font-display: 'Montserrat', 'Segoe UI', sans-serif;
-  --font-body: 'Montserrat', 'Segoe UI', sans-serif;
-  --radius: 22px;
-  --content-max: 1180px;
-  --transition: 180ms ease;
+}
+
+:root {
+  font-family: var(--font-display);
 
   line-height: 1.5;
   font-weight: 400;

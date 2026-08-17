@@ -156,23 +156,35 @@ function AdminPage() {
     })
   }
 
+  const fieldClasses = 'grid gap-[0.45rem]'
+  const labelClasses = 'text-[0.82rem] uppercase tracking-[0.08em] text-text-soft'
+  const inputClasses = 'rounded-[14px] border border-white/15 bg-white/[0.04] px-4 py-[0.85rem] text-text'
+  const cardClasses = 'mx-auto w-[min(760px,calc(100%-2rem))] rounded-panel border border-white/15 bg-panel/84 p-8 shadow-soft'
+  const primaryBtnClasses =
+    'inline-flex items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 px-[1.4rem] py-[0.9rem] font-extrabold text-[#190d1f] shadow-[0_15px_32px_rgba(255,95,210,0.4)] transition-transform duration-200 hover:-translate-y-px'
+  const secondaryBtnClasses =
+    'inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px'
+  const manageBtnClasses =
+    'inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.06] px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px'
+
   if (loadingSession) {
     return (
-      <div className="admin-shell">
-        <div className="login-card">Chargement de l’admin…</div>
+      <div className="min-h-screen bg-[linear-gradient(180deg,#150d25_0%,#090712_100%)] py-12">
+        <div className={cardClasses}>Chargement de l’admin…</div>
       </div>
     )
   }
 
   if (!session) {
     return (
-      <div className="admin-shell">
-        <div className="login-card">
+      <div className="min-h-screen bg-[linear-gradient(180deg,#150d25_0%,#090712_100%)] py-12">
+        <div className={cardClasses}>
           <h2 style={{ marginBottom: '1rem' }}>Connexion admin</h2>
-          <form onSubmit={handleLogin}>
-            <div className="field">
-              <label htmlFor="email">Email</label>
+          <form className="grid gap-4" onSubmit={handleLogin}>
+            <div className={fieldClasses}>
+              <label className={labelClasses} htmlFor="email">Email</label>
               <input
+                className={inputClasses}
                 id="email"
                 type="email"
                 value={loginForm.email}
@@ -181,9 +193,10 @@ function AdminPage() {
               />
             </div>
 
-            <div className="field">
-              <label htmlFor="password">Mot de passe</label>
+            <div className={fieldClasses}>
+              <label className={labelClasses} htmlFor="password">Mot de passe</label>
               <input
+                className={inputClasses}
                 id="password"
                 type="password"
                 value={loginForm.password}
@@ -194,7 +207,7 @@ function AdminPage() {
 
             {authError ? <p style={{ color: '#ff7ad9' }}>{authError}</p> : null}
 
-            <button className="form-submit" type="submit">
+            <button className={primaryBtnClasses} type="submit">
               Se connecter
             </button>
           </form>
@@ -204,26 +217,27 @@ function AdminPage() {
   }
 
   return (
-    <div className="admin-shell">
-      <div className="admin-panel">
-        <div className="admin-header">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#150d25_0%,#090712_100%)] py-12">
+      <div className={cardClasses}>
+        <div className="mb-6 flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2>Gestion des concerts</h2>
             <p>Connecté en tant que {session.user.email}</p>
           </div>
           <button
             type="button"
-            className="logout-btn"
+            className={`${manageBtnClasses} px-4`}
             onClick={() => supabase.auth.signOut()}
           >
             Déconnexion
           </button>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="field">
-            <label htmlFor="date">Date</label>
+        <form className="grid gap-4" onSubmit={handleSubmit}>
+          <div className={fieldClasses}>
+            <label className={labelClasses} htmlFor="date">Date</label>
             <input
+              className={inputClasses}
               id="date"
               type="datetime-local"
               value={form.date}
@@ -232,9 +246,10 @@ function AdminPage() {
             />
           </div>
 
-          <div className="field">
-            <label htmlFor="ville">Ville</label>
+          <div className={fieldClasses}>
+            <label className={labelClasses} htmlFor="ville">Ville</label>
             <input
+              className={inputClasses}
               id="ville"
               type="text"
               value={form.ville}
@@ -243,9 +258,10 @@ function AdminPage() {
             />
           </div>
 
-          <div className="field">
-            <label htmlFor="salle">Salle</label>
+          <div className={fieldClasses}>
+            <label className={labelClasses} htmlFor="salle">Salle</label>
             <input
+              className={inputClasses}
               id="salle"
               type="text"
               value={form.salle}
@@ -254,9 +270,10 @@ function AdminPage() {
             />
           </div>
 
-          <div className="field">
-            <label htmlFor="url_billetterie">URL billetterie</label>
+          <div className={fieldClasses}>
+            <label className={labelClasses} htmlFor="url_billetterie">URL billetterie</label>
             <input
+              className={inputClasses}
               id="url_billetterie"
               type="url"
               value={form.url_billetterie}
@@ -265,7 +282,7 @@ function AdminPage() {
             />
           </div>
 
-          <label className="inline-check" htmlFor="complet">
+          <label className="flex items-center gap-3 pt-[0.4rem]" htmlFor="complet">
             <input
               id="complet"
               type="checkbox"
@@ -277,47 +294,49 @@ function AdminPage() {
 
           {message ? <p style={{ color: '#38f0d1' }}>{message}</p> : null}
 
-          <div className="hero-actions">
-            <button className="form-submit" type="submit">
+          <div className="mt-8 flex flex-wrap gap-4">
+            <button className={primaryBtnClasses} type="submit">
               {form.id ? 'Modifier le concert' : 'Ajouter le concert'}
             </button>
             {form.id ? (
-              <button type="button" className="secondary-btn" onClick={() => setForm(defaultForm)}>
+              <button type="button" className={secondaryBtnClasses} onClick={() => setForm(defaultForm)}>
                 Annuler
               </button>
             ) : null}
           </div>
         </form>
 
-        <div className="table-wrap">
+        <div className="mt-4 overflow-x-auto">
           {loadingConcerts ? (
-            <div className="state-box">Chargement du tableau…</div>
+            <div className="rounded-panel border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
+              Chargement du tableau…
+            </div>
           ) : (
-            <table className="admin-table">
+            <table className="w-full min-w-[640px] border-collapse">
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Ville</th>
-                  <th>Salle</th>
-                  <th>Billetterie</th>
-                  <th>Statut</th>
-                  <th>Actions</th>
+                  <th className="border-b border-white/15 px-[0.6rem] py-[0.9rem] text-left text-[0.75rem] uppercase tracking-[0.12em] text-text">Date</th>
+                  <th className="border-b border-white/15 px-[0.6rem] py-[0.9rem] text-left text-[0.75rem] uppercase tracking-[0.12em] text-text">Ville</th>
+                  <th className="border-b border-white/15 px-[0.6rem] py-[0.9rem] text-left text-[0.75rem] uppercase tracking-[0.12em] text-text">Salle</th>
+                  <th className="border-b border-white/15 px-[0.6rem] py-[0.9rem] text-left text-[0.75rem] uppercase tracking-[0.12em] text-text">Billetterie</th>
+                  <th className="border-b border-white/15 px-[0.6rem] py-[0.9rem] text-left text-[0.75rem] uppercase tracking-[0.12em] text-text">Statut</th>
+                  <th className="border-b border-white/15 px-[0.6rem] py-[0.9rem] text-left text-[0.75rem] uppercase tracking-[0.12em] text-text">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {sortedConcerts.map((concert) => (
                   <tr key={concert.id}>
-                    <td>{new Date(concert.date).toLocaleString('fr-FR')}</td>
-                    <td>{concert.ville}</td>
-                    <td>{concert.salle}</td>
-                    <td>{concert.url_billetterie ? 'Oui' : 'Non'}</td>
-                    <td>{concert.complet ? 'Complet' : 'Ouvert'}</td>
-                    <td>
-                      <div className="admin-actions">
-                        <button type="button" className="manage-btn" onClick={() => handleEdit(concert)}>
+                    <td className="border-b border-white/15 px-[0.6rem] py-[0.9rem] align-top text-text-soft">{new Date(concert.date).toLocaleString('fr-FR')}</td>
+                    <td className="border-b border-white/15 px-[0.6rem] py-[0.9rem] align-top text-text-soft">{concert.ville}</td>
+                    <td className="border-b border-white/15 px-[0.6rem] py-[0.9rem] align-top text-text-soft">{concert.salle}</td>
+                    <td className="border-b border-white/15 px-[0.6rem] py-[0.9rem] align-top text-text-soft">{concert.url_billetterie ? 'Oui' : 'Non'}</td>
+                    <td className="border-b border-white/15 px-[0.6rem] py-[0.9rem] align-top text-text-soft">{concert.complet ? 'Complet' : 'Ouvert'}</td>
+                    <td className="border-b border-white/15 px-[0.6rem] py-[0.9rem] align-top text-text-soft">
+                      <div className="flex flex-wrap gap-2">
+                        <button type="button" className={manageBtnClasses} onClick={() => handleEdit(concert)}>
                           Modifier
                         </button>
-                        <button type="button" className="manage-btn" onClick={() => handleDelete(concert.id)}>
+                        <button type="button" className={manageBtnClasses} onClick={() => handleDelete(concert.id)}>
                           Supprimer
                         </button>
                       </div>

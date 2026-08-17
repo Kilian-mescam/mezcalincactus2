@@ -1,6 +1,6 @@
 // Configuration statique du groupe, éditable à la main depuis le code.
 export const bandConfig = {
-  name: 'MEZCAL IN CACTUS',
+  name: 'Mezcal in Cactus',
   shopUrl: '',
   socialLinks: [
     { label: 'Instagram', url: 'https://instagram.com/mezcalincactus' },
