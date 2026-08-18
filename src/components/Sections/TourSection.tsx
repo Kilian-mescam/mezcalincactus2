@@ -72,7 +72,7 @@ function TourSection() {
     >
       <div className="mx-auto grid w-[min(1180px,calc(100%-2rem))] grid-cols-1 items-start gap-12 md:grid-cols-[1fr_1.4fr]">
         <div>
-          <span className="inline-flex w-fit items-center rounded-full border border-white/20 bg-white/[0.04] px-[0.9rem] py-[0.45rem] text-[0.68rem] uppercase tracking-[0.18em] text-accent-3">
+          <span className="inline-flex w-fit items-center border border-white/20 bg-white/[0.04] px-[0.9rem] py-[0.45rem] text-[0.68rem] uppercase tracking-[0.18em] text-accent-3">
             Tour
           </span>
           <h2 className="mt-4 text-[clamp(2.5rem,5vw,4rem)] leading-[0.95]">
@@ -88,13 +88,13 @@ function TourSection() {
 
         <div>
           {loading ? (
-            <div className="rounded-panel border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
+            <div className="border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
               Chargement des dates…
             </div>
           ) : error ? (
-            <div className="rounded-panel border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">{error}</div>
+            <div className="border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">{error}</div>
           ) : upcomingConcerts.length === 0 && pastConcerts.length === 0 ? (
-            <div className="rounded-panel border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
+            <div className="border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
               Aucune date publiée pour le moment.
             </div>
           ) : (

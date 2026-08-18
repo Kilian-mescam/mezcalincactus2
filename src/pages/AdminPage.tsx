@@ -158,14 +158,14 @@ function AdminPage() {
 
   const fieldClasses = 'grid gap-[0.45rem]'
   const labelClasses = 'text-[0.82rem] uppercase tracking-[0.08em] text-text-soft'
-  const inputClasses = 'rounded-[14px] border border-white/15 bg-white/[0.04] px-4 py-[0.85rem] text-text'
-  const cardClasses = 'mx-auto w-[min(760px,calc(100%-2rem))] rounded-panel border border-white/15 bg-panel/84 p-8 shadow-soft'
+  const inputClasses = 'border border-white/15 bg-white/[0.04] px-4 py-[0.85rem] text-text'
+  const cardClasses = 'mx-auto w-[min(760px,calc(100%-2rem))] border border-white/15 bg-panel/84 p-8 shadow-soft'
   const primaryBtnClasses =
-    'inline-flex items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 px-[1.4rem] py-[0.9rem] font-extrabold text-[#190d1f] shadow-[0_15px_32px_rgba(255,95,210,0.4)] transition-transform duration-200 hover:-translate-y-px'
+    'inline-flex items-center justify-center bg-gradient-to-br from-accent to-accent-2 px-[1.4rem] py-[0.9rem] font-extrabold text-[#190d1f] shadow-[0_15px_32px_rgba(255,95,210,0.4)] transition-transform duration-200 hover:-translate-y-px'
   const secondaryBtnClasses =
-    'inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px'
+    'inline-flex items-center justify-center border border-white/15 bg-white/5 px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px'
   const manageBtnClasses =
-    'inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.06] px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px'
+    'inline-flex items-center justify-center border border-white/15 bg-white/[0.06] px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px'
 
   if (loadingSession) {
     return (
@@ -308,7 +308,7 @@ function AdminPage() {
 
         <div className="mt-4 overflow-x-auto">
           {loadingConcerts ? (
-            <div className="rounded-panel border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
+            <div className="border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
               Chargement du tableau…
             </div>
           ) : (

@@ -18,12 +18,12 @@ function ConcertCard({ concert }) {
       </div>
 
       {concert.complet ? (
-        <span className="inline-flex items-center rounded-full bg-accent/12 px-[0.7rem] py-[0.34rem] text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent">
+        <span className="inline-flex items-center bg-accent/12 px-[0.7rem] py-[0.34rem] text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent">
           Complet
         </span>
       ) : concert.url_billetterie ? (
         <a
-          className="inline-flex w-fit items-center justify-center rounded-full border border-white/[0.12] bg-white/5 px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px"
+          className="inline-flex w-fit items-center justify-center border border-white/[0.12] bg-white/5 px-[1.4rem] py-[0.9rem] text-text transition-transform duration-200 hover:-translate-y-px"
           href={concert.url_billetterie}
           target="_blank"
           rel="noreferrer"

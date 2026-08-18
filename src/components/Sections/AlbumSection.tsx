@@ -1,18 +1,19 @@
 import Section from '../Section'
 import albumCover from '../../assets/album.png'
+import albumBackground from '../../assets/Frame.jpg'
 import { album } from '../../data/album'
 
 function AlbumSection() {
   return (
     <Section
       id="album"
-      eyebrow="Album"
       title={album.title}
       description="Un voyage en deux faces, du feu de l'agave à l'éveil du peyotl."
+      background={albumBackground}
     >
       <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1.05fr_1.45fr]">
         <img
-          className="aspect-square w-full rounded-panel border border-white/15 object-cover shadow-soft"
+          className="aspect-square w-full border border-white/15 object-cover shadow-soft"
           src={albumCover}
           alt={`Pochette de l'album ${album.title}`}
         />
@@ -23,7 +24,7 @@ function AlbumSection() {
               .reduce((count, previousSide) => count + previousSide.tracks.length, 0)
 
             return (
-              <div className="rounded-panel border border-white/15 bg-panel/84 p-6" key={side.label}>
+              <div className="border border-white/15 bg-panel/84 p-6" key={side.label}>
                 <h3 className="mb-4 text-[0.85rem] uppercase tracking-[0.12em] text-accent-2">{side.label}</h3>
                 <ol className="grid list-none gap-3">
                   {side.tracks.map((track, trackIndex) => (

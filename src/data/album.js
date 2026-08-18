@@ -15,8 +15,8 @@ export const album = {
       label: 'Face B – Peyotl',
       tracks: [
         'Les Algues Vertes',
-        'La marche de l’éléphant (instrumental)',
-        'L’Éveil du Peyotl (clôture)',
+        'La marche de l’éléphant',
+        'L’Éveil du Peyotl',
       ],
     },
   ],
