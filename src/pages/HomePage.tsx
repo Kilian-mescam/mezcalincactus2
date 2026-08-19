@@ -1,5 +1,4 @@
 import AboutSection from '../components/Sections/AboutSection'
-import AlbumSection from '../components/Sections/AlbumSection'
 import ContactSection from '../components/Sections/ContactSection'
 import HeroSection from '../components/Sections/HeroSection'
 import MerchSection from '../components/Sections/MerchSection'
@@ -15,11 +14,10 @@ function HomePage() {
 
       <main>
         <HeroSection />
-        <AlbumSection />
+        <TourSection />
         <MerchSection />
         <VideoSection />
         <AboutSection />
-        <TourSection />
         <ContactSection />
       </main>
 

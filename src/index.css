@@ -8,18 +8,39 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Gotham Light';
+  src: url('./assets/font/Gotham Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: 'Adieu', 'Segoe UI', sans-serif;
+  --font-body: 'Gotham Light', 'Segoe UI', sans-serif;
 
-  --color-bg: #140d24;
-  --color-panel: #120f21;
-  --color-text: #fdf4ff;
-  --color-text-soft: #d9c8ff;
-  --color-accent: #ff5fd2;
-  --color-accent-2: #ffb703;
-  --color-accent-3: #38f0d1;
+  --color-bg: #170f0a;
+  --color-panel: #1f150d;
+  --color-text: #fbf2e4;
+  --color-text-soft: #d8c3a5;
+  --color-accent: #e8552c;
+  --color-accent-2: #e8b23c;
+  --color-accent-3: #3c8f6a;
 
-  --shadow-soft: 0 24px 60px rgba(18, 8, 35, 0.45);
+  --shadow-soft: 0 24px 60px rgba(23, 15, 10, 0.45);
+
+  /* Charte graphique — orange / turquoise / near-black */
+  --color-admin-ink: #15130f;
+  --color-admin-panel: #1c1a15;
+  --color-admin-orange: #e15b25;
+  --color-admin-teal: #14d6ab;
+  --color-admin-yellow: #f0a93c;
+  --color-admin-sage: #9dc0a0;
+  --color-admin-steel: #2c5568;
+  --color-admin-red: #d8452f;
+  --color-admin-green: #3f8c4e;
+  --color-admin-cream: #f6f1e7;
 }
 
 :root {
@@ -29,8 +50,8 @@
   font-weight: 400;
   color: var(--color-text);
   background:
-    radial-gradient(circle at top left, rgba(255, 95, 210, 0.3), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(56, 240, 209, 0.28), transparent 30%),
+    radial-gradient(circle at top left, rgba(232, 85, 44, 0.3), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(60, 143, 106, 0.28), transparent 30%),
     var(--color-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -74,28 +95,43 @@ button {
   min-height: 100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
-h1,
-h2,
-h3,
-p {
-  margin: 0;
+.admin-texture {
+  background-color: var(--color-admin-ink);
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ffffff;
+.admin-card {
+  background-color: var(--color-admin-panel);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-p {
-  color: var(--color-text-soft);
+@layer base {
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--color-text-soft);
+  }
 }
 

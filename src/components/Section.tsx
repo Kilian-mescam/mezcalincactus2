@@ -1,5 +1,25 @@
+import type { ReactNode } from 'react'
+
 // Composant générique pour garder un layout cohérent entre les sections du site.
-function Section({ id, title, description, background, children }) {
+interface SectionProps {
+  id: string
+  title?: string
+  background?: string
+  hideTitle?: boolean
+  compact?: boolean
+  titleClassName?: string
+  children: ReactNode
+}
+
+function Section({
+  id,
+  title = '',
+  background,
+  hideTitle = false,
+  compact = false,
+  titleClassName = '',
+  children,
+}: SectionProps) {
   const isColor = background?.startsWith('#')
 
   const backgroundStyle = isColor
@@ -14,14 +34,16 @@ function Section({ id, title, description, background, children }) {
 
   return (
     <section
-      className="flex min-h-screen flex-col justify-center py-20"
+      className={`flex flex-col justify-center ${compact ? 'min-h-[40vh] py-10' : 'min-h-screen py-20'}`}
       id={id}
       style={backgroundStyle}
     >
       <div className="mx-auto w-[min(1180px,calc(100%-2rem))]">
-        <div className="mb-8 flex flex-col gap-2">
-          <h2 className="text-[clamp(2rem,4vw,3.5rem)]">{title}</h2>
-        </div>
+        {!hideTitle && (
+          <div className="mb-12 flex flex-col gap-3">
+            <h2 className={`text-[clamp(2rem,4vw,3.5rem)] ${titleClassName}`}>{title}</h2>
+          </div>
+        )}
         {children}
       </div>
     </section>

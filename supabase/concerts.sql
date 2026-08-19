@@ -6,7 +6,10 @@ create table public.concerts (
   ville text not null,
   salle text not null,
   url_billetterie text null,
-  complet boolean not null default false
+  complet boolean not null default false,
+  pair_band_1 text null,
+  pair_band_2 text null,
+  pair_band_3 text null
 );
 
 -- Lecture publique : tout le monde peut voir les dates.

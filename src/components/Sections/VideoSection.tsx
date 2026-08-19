@@ -1,6 +1,6 @@
 import Section from '../Section'
 import { videoItems } from '../../data/gallery'
-import videoBackground from '../../assets/background-1.jpg'
+import videoBackground from '../../assets/background-2.jpg'
 
 function VideoSection() {
   return (
@@ -13,7 +13,7 @@ function VideoSection() {
       <div className="mt-6 flex justify-center">
         {videoItems.map((video) => (
           <div
-            className="relative aspect-video w-full max-w-4xl overflow-hidden border border-white/15 bg-panel/80"
+            className="relative aspect-video w-full max-w-full overflow-hidden border border-white/15 bg-panel/80"
             key={video.id}
           >
             <iframe

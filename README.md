@@ -72,7 +72,10 @@ create table public.concerts (
   ville text not null,
   salle text not null,
   url_billetterie text null,
-  complet boolean not null default false
+  complet boolean not null default false,
+  pair_band_1 text null,
+  pair_band_2 text null,
+  pair_band_3 text null
 );
 ```
 
@@ -139,6 +142,9 @@ Le dossier `dist/` est prêt pour un déploiement statique.
 5. Ajoutez les variables d’environnement :
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
+
+Le fichier `public/_redirects` (copié dans `dist/` au build) redirige toutes les routes vers
+`index.html` pour que `/admin` et `/mentions-legales` fonctionnent au rechargement de page.
 
 ### Vercel
 

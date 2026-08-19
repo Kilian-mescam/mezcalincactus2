@@ -1,37 +1,18 @@
 import Section from '../Section'
-import { bandConfig } from '../../data/config'
-import contactBackground from '../../assets/Frame.jpg'
 
 function ContactSection() {
   return (
-    <Section
-      id="contact"
-      title="Contact"
-      description="Pour les bookings, les dates, les collaborations et les soirées."
-      background={contactBackground}
-    >
-      <div className="border border-white/15 bg-panel/84 p-8 text-center shadow-soft">
-        <p>booking@mezcalincactus.com</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+    <Section id="contact" title="Contact" background="#242424" compact>
+      <div className="flex justify-center">
+        <div className="w-full max-w-md border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm">
+          
+          <p className="mt-4 text-[1.25rem] font-bold text-text">mezcalincactus@gmail.com</p>
           <a
-            className="inline-flex items-center justify-center bg-gradient-to-br from-accent to-accent-2 px-[1.4rem] py-[0.9rem] font-extrabold text-[#190d1f] shadow-[0_15px_32px_rgba(255,95,210,0.4)] transition-transform duration-200 hover:-translate-y-px"
-            href="mailto:booking@mezcalincactus.com"
+            className="mt-6 inline-flex items-center justify-center bg-accent px-[1.4rem] py-[0.9rem] font-extrabold text-text transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-accent-3"
+            href="mailto:mezcalincactus@gmail.com"
           >
             Écrire au groupe
           </a>
-        </div>
-        <div className="mt-5 flex flex-wrap justify-center gap-[0.8rem]">
-          {bandConfig.socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[0.8rem] uppercase tracking-[0.09em] text-text-soft"
-            >
-              {link.label}
-            </a>
-          ))}
         </div>
       </div>
     </Section>

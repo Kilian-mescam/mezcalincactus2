@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import ConcertCard from '../ConcertCard'
-import tourBackground from '../../assets/background-3.jpg'
+import tourBackground from '../../assets/background-1.jpg'
 import { supabase } from '../../lib/supabase'
+import type { Concert } from '../../types/entities'
 
 function TourSection() {
-  const [concerts, setConcerts] = useState([])
+  const [concerts, setConcerts] = useState<Concert[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -49,20 +50,17 @@ function TourSection() {
   }, [])
 
   const sortedConcerts = useMemo(
-    () => [...concerts].sort((a, b) => new Date(a.date) - new Date(b.date)),
+    () => [...concerts].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()),
     [concerts],
   )
 
-  const upcomingConcerts = sortedConcerts.filter(
-    (concert) => new Date(concert.date) >= new Date(),
-  )
-  const pastConcerts = sortedConcerts.filter(
-    (concert) => new Date(concert.date) < new Date(),
-  )
+  const upcomingConcerts = sortedConcerts
+    .filter((concert) => new Date(concert.date) >= new Date())
+    .slice(0, 6)
 
   return (
     <section
-      className="py-24"
+      className="flex min-h-screen flex-col justify-center py-24"
       id="tour"
       style={{
         backgroundImage: `linear-gradient(160deg, rgba(10, 8, 18, 0.55), rgba(10, 8, 18, 0.85)), url(${tourBackground})`,
@@ -72,18 +70,13 @@ function TourSection() {
     >
       <div className="mx-auto grid w-[min(1180px,calc(100%-2rem))] grid-cols-1 items-start gap-12 md:grid-cols-[1fr_1.4fr]">
         <div>
-          <span className="inline-flex w-fit items-center border border-white/20 bg-white/[0.04] px-[0.9rem] py-[0.45rem] text-[0.68rem] uppercase tracking-[0.18em] text-accent-3">
-            Tour
-          </span>
-          <h2 className="mt-4 text-[clamp(2.5rem,5vw,4rem)] leading-[0.95]">
-            Dates de
+          <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold uppercase leading-[0.95]">
+            Upcoming
             <br />
-            concert
+            Tour
+            <br />
+            Dates
           </h2>
-          <p className="mt-4 max-w-[28rem]">
-            Les prochaines dates sont lues directement depuis Supabase et peuvent être
-            modifiées sans redéploiement.
-          </p>
         </div>
 
         <div>
@@ -93,31 +86,16 @@ function TourSection() {
             </div>
           ) : error ? (
             <div className="border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">{error}</div>
-          ) : upcomingConcerts.length === 0 && pastConcerts.length === 0 ? (
+          ) : upcomingConcerts.length === 0 ? (
             <div className="border border-white/15 bg-panel/80 p-[1.4rem] text-text-soft">
               Aucune date publiée pour le moment.
             </div>
           ) : (
-            <>
-              {upcomingConcerts.length > 0 ? (
-                <div className="grid">
-                  {upcomingConcerts.map((concert) => (
-                    <ConcertCard key={concert.id} concert={concert} />
-                  ))}
-                </div>
-              ) : null}
-
-              {pastConcerts.length > 0 ? (
-                <>
-                  <h3 className="mt-10 mb-2 text-base uppercase tracking-[0.16em] text-accent-2">Anciens shows</h3>
-                  <div className="grid">
-                    {[...pastConcerts].reverse().map((concert) => (
-                      <ConcertCard key={concert.id} concert={concert} />
-                    ))}
-                  </div>
-                </>
-              ) : null}
-            </>
+            <div className="grid">
+              {upcomingConcerts.map((concert) => (
+                <ConcertCard key={concert.id} concert={concert} />
+              ))}
+            </div>
           )}
         </div>
       </div>

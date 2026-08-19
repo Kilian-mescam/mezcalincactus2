@@ -1,28 +1,33 @@
 import Section from '../Section'
 import { bandBio } from '../../data/bio'
-import aboutBackground from '../../assets/background-2.jpg'
 
 function AboutSection() {
   return (
-    <Section
-      id="about"
-      title="Biographie"
-      description="Une histoire de riffs, de poussière et de lumière."
-      background={aboutBackground}
-    >
-      <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1.05fr_1.45fr]">
-        <img
-          className="min-h-[420px] w-full border border-white/15 object-cover shadow-soft"
-          src={bandBio.photo}
-          alt="Le groupe en concert"
-        />
-        <div className="border border-white/15 bg-panel/84 p-6">
-          {bandBio.text.split('\n').map((paragraph, index) => (
-            <p className="mb-4" key={index}>
-              {paragraph.trim()}
-            </p>
-          ))}
+    <Section id="about" background="#242424" hideTitle>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div>
+          <img
+            className="mb-6 h-[420px] w-full object-cover"
+            src={bandBio.photos[0]}
+            alt="Le groupe en concert"
+          />
+          <h2 className="text-[clamp(2rem,4vw,3.5rem)]">About</h2>
         </div>
+
+        {bandBio.columns.map((paragraphs, index) => (
+          <div key={index}>
+            <img
+              className="mb-6 h-[420px] w-full object-cover"
+              src={bandBio.photos[index + 1]}
+              alt="Le groupe en concert"
+            />
+            {paragraphs.map((paragraph, paragraphIndex) => (
+              <p className="mb-4" key={paragraphIndex}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        ))}
       </div>
     </Section>
   )
