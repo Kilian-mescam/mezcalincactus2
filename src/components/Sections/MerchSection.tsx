@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Section from '../Section'
 import OrderModal from '../OrderModal'
-import albumCover from '../../assets/album.jpg'
+import albumCover from '../../assets/album.webp'
 import { album } from '../../data/album'
 import { merchItems } from '../../data/merch'
 import { bandConfig } from '../../data/config'

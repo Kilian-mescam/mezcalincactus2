@@ -1,6 +1,6 @@
 import Section from '../Section'
 import { videoItems } from '../../data/gallery'
-import videoBackground from '../../assets/background-2.jpg'
+import videoBackground from '../../assets/background-2.webp'
 
 function VideoSection() {
   return (

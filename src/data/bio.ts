@@ -1,7 +1,7 @@
 // Données biographiques et visuelles, faciles à modifier sans toucher au layout.
-import bandPhoto1 from '../assets/band-1.jpg'
-import bandPhoto2 from '../assets/band-2.jpg'
-import bandPhoto3 from '../assets/band-3.jpg'
+import bandPhoto1 from '../assets/band-1.webp'
+import bandPhoto2 from '../assets/band-2.webp'
+import bandPhoto3 from '../assets/band-3.webp'
 import type { BandBio } from '../types/entities'
 
 export const bandBio: BandBio = {

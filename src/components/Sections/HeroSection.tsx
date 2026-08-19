@@ -1,5 +1,5 @@
 import logoImage from '../../assets/logo.png'
-import heroBackground from '../../assets/band-3.jpg'
+import heroBackground from '../../assets/band-3.webp'
 import { bandConfig } from '../../data/config'
 
 function HeroSection() {

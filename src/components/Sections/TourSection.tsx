@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import ConcertCard from '../ConcertCard'
-import tourBackground from '../../assets/background-1.jpg'
+import tourBackground from '../../assets/background-1.webp'
 import { supabase } from '../../lib/supabase'
 import type { Concert } from '../../types/entities'
 

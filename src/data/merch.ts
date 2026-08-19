@@ -1,7 +1,7 @@
-import albumCover from '../assets/album.jpg'
-import cdImage from '../assets/merch/neblina.jpg'
-import tshirtBlancImage from '../assets/merch/tshirt-white.jpg'
-import tshirtNoirImage from '../assets/merch/tshirt-back.jpg'
+import albumCover from '../assets/album.webp'
+import cdImage from '../assets/merch/neblina.webp'
+import tshirtBlancImage from '../assets/merch/tshirt-white.webp'
+import tshirtNoirImage from '../assets/merch/tshirt-back.webp'
 import { album } from './album'
 import type { MerchItem } from '../types/entities'
 
