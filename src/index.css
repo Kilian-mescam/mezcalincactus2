@@ -266,3 +266,393 @@ button {
   }
 }
 
+/* ==========================================================================
+   Psychedelic mode — "on a pris du LSD"
+   ========================================================================== */
+
+.psy-toggle-wrap {
+  pointer-events: none;
+}
+
+.psy-toggle-wrap .psy-toggle {
+  pointer-events: auto;
+}
+
+.psy-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: psy-spiral-spin 20s linear infinite;
+}
+
+.psy-ring__text {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  fill: #ffffff;
+  text-transform: uppercase;
+}
+
+.psy-toggle {
+  overflow: hidden;
+}
+
+.psy-toggle__spiral {
+  display: inline-block;
+  animation: psy-spiral-spin 6s linear infinite;
+}
+
+html.psychedelic .psy-toggle {
+  border-color: transparent;
+  background: radial-gradient(circle at 30% 30%, #ff2fd0, #2fe0ff 45%, #fff94f 75%, #ff2fd0);
+  background-size: 220% 220%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.psychedelic .psy-toggle {
+    animation: psy-bg-drift 3.5s linear infinite;
+  }
+
+  html.psychedelic .psy-toggle__spiral {
+    animation-duration: 0.9s;
+  }
+
+  html.psychedelic .psy-ring {
+    animation-duration: 5s;
+  }
+
+  html.psychedelic .psy-ring__text {
+    fill: #ff2fd0;
+    animation: psy-hue-cycle 2.5s linear infinite;
+  }
+}
+
+/* Base trip palette — applied even when the user's OS asks to reduce motion,
+   so the vibe survives without any animation. */
+html.psychedelic {
+  --color-bg: #180a24;
+  --color-accent: #ff2fd0;
+  --color-accent-2: #2fe0ff;
+  --color-accent-3: #fff94f;
+}
+
+html.psychedelic body {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 47, 208, 0.55), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(47, 224, 255, 0.5), transparent 42%),
+    radial-gradient(circle at 30% 85%, rgba(255, 249, 79, 0.45), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(140, 47, 255, 0.55), transparent 45%),
+    #180a24;
+  background-size: 200% 200%;
+}
+
+html.psychedelic h1,
+html.psychedelic h2,
+html.psychedelic h3 {
+  color: #2fe0ff;
+}
+
+/* Full chaos — only when the browser isn't asking for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html.psychedelic h1,
+  html.psychedelic h2,
+  html.psychedelic h3 {
+    background: linear-gradient(90deg, #ff2fd0, #2fe0ff, #fff94f, #ff2fd0);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation:
+      psy-text-rainbow 3.2s linear infinite,
+      psy-text-wobble 2.4s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  html.psychedelic a,
+  html.psychedelic button {
+    animation:
+      psy-hue-cycle 3s linear infinite,
+      psy-warp 2.8s ease-in-out infinite;
+  }
+
+  html.psychedelic img:not(.logo-trip__img) {
+    animation: psy-hue-cycle 4s linear infinite;
+  }
+
+  html.psychedelic img:not(.logo-trip__img):not(.psy-still) {
+    animation:
+      psy-hue-cycle 4s linear infinite,
+      psy-warp 3.4s ease-in-out infinite;
+  }
+
+  /* Logo hover-trip effect, always on while tripping — not just on hover */
+  html.psychedelic .logo-trip__img {
+    animation:
+      logo-trip-wobble 2.6s ease-in-out infinite,
+      logo-trip-glow 3s linear infinite;
+  }
+
+  html.psychedelic .logo-trip__ghost--a {
+    opacity: 0.9;
+    animation: logo-trip-ghost-a 1.4s ease-in-out infinite;
+  }
+
+  html.psychedelic .logo-trip__ghost--b {
+    opacity: 0.22;
+    animation: logo-trip-ghost-b 1.7s ease-in-out infinite;
+  }
+
+  /* Nav bar gets its own dedicated dose */
+  html.psychedelic header {
+    animation: psy-header-pulse 6s linear infinite;
+  }
+
+  html.psychedelic header nav a {
+    animation:
+      psy-hue-cycle 1.8s linear infinite,
+      psy-warp 1.6s ease-in-out infinite,
+      psy-glitch-shadow 0.5s steps(2, jump-none) infinite;
+  }
+}
+
+.psy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.psy-blob {
+  position: absolute;
+  width: 42vmax;
+  height: 42vmax;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.psy-blob--a {
+  top: -10%;
+  left: -10%;
+  background: #ff2fd0;
+}
+
+.psy-blob--b {
+  top: 10%;
+  right: -15%;
+  background: #2fe0ff;
+}
+
+.psy-blob--c {
+  bottom: -15%;
+  left: 20%;
+  background: #fff94f;
+}
+
+.psy-blob--d {
+  bottom: -10%;
+  right: 5%;
+  background: #8c2fff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .psy-blob--a {
+    animation: psy-blob-float-a 14s ease-in-out infinite;
+  }
+
+  .psy-blob--b {
+    animation: psy-blob-float-b 18s ease-in-out infinite;
+  }
+
+  .psy-blob--c {
+    animation: psy-blob-float-c 16s ease-in-out infinite;
+  }
+
+  .psy-blob--d {
+    animation: psy-blob-float-d 20s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .psy-blob,
+  .psy-cursor-trail {
+    display: none;
+  }
+}
+
+.psy-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 47, 208, 0.9), rgba(47, 224, 255, 0.5) 50%, transparent 75%);
+  mix-blend-mode: difference;
+  z-index: 41;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .psy-cursor-trail {
+    animation: psy-cursor-pulse 1.2s ease-in-out infinite;
+  }
+}
+
+@keyframes psy-spiral-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes psy-bg-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes psy-hue-cycle {
+  from {
+    filter: hue-rotate(0deg) saturate(1.35);
+  }
+  to {
+    filter: hue-rotate(360deg) saturate(1.35);
+  }
+}
+
+@keyframes psy-text-rainbow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes psy-text-wobble {
+  0%,
+  100% {
+    transform: skew(0deg, 0deg) scale(1);
+  }
+  25% {
+    transform: skew(1.5deg, 0.5deg) scale(1.01);
+  }
+  50% {
+    transform: skew(-1deg, -0.5deg) scale(0.99);
+  }
+  75% {
+    transform: skew(1deg, -1deg) scale(1.02);
+  }
+}
+
+@keyframes psy-blob-float-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 50%;
+  }
+  50% {
+    transform: translate(15vw, 10vh) scale(1.2);
+    border-radius: 42% 58% 60% 40%;
+  }
+}
+
+@keyframes psy-blob-float-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 50%;
+  }
+  50% {
+    transform: translate(-18vw, 12vh) scale(0.85);
+    border-radius: 60% 40% 45% 55%;
+  }
+}
+
+@keyframes psy-blob-float-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 50%;
+  }
+  50% {
+    transform: translate(10vw, -14vh) scale(1.15);
+    border-radius: 38% 62% 55% 45%;
+  }
+}
+
+@keyframes psy-blob-float-d {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 50%;
+  }
+  50% {
+    transform: translate(-12vw, -10vh) scale(1.25);
+    border-radius: 55% 45% 40% 60%;
+  }
+}
+
+@keyframes psy-warp {
+  0%,
+  100% {
+    transform: scale(1, 1) skew(0deg, 0deg);
+  }
+  20% {
+    transform: scale(1.04, 0.96) skew(-3deg, 1deg);
+  }
+  40% {
+    transform: scale(0.96, 1.05) skew(2deg, -2deg);
+  }
+  60% {
+    transform: scale(1.05, 0.95) skew(-2deg, 3deg);
+  }
+  80% {
+    transform: scale(0.95, 1.04) skew(3deg, -1deg);
+  }
+}
+
+@keyframes psy-header-pulse {
+  0%,
+  100% {
+    background-color: rgba(255, 47, 208, 0.35);
+  }
+  33% {
+    background-color: rgba(47, 224, 255, 0.35);
+  }
+  66% {
+    background-color: rgba(255, 249, 79, 0.3);
+  }
+}
+
+@keyframes psy-glitch-shadow {
+  0%,
+  100% {
+    text-shadow: 2px 0 #ff2fd0, -2px 0 #2fe0ff;
+  }
+  50% {
+    text-shadow: -2px 0 #ff2fd0, 2px 0 #2fe0ff;
+  }
+}
+
+@keyframes psy-cursor-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.5;
+  }
+}
+

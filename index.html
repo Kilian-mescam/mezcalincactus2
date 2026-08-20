@@ -33,6 +33,13 @@
     <meta name="twitter:image" content="https://mezcalincactus.com/og-image.png" />
   </head>
   <body>
+    <script>
+      try {
+        if (localStorage.getItem('psychedelic-mode') === 'on') {
+          document.documentElement.classList.add('psychedelic')
+        }
+      } catch (e) {}
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

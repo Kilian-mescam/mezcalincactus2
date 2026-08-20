@@ -7,7 +7,7 @@ function AboutSection() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div>
           <img
-            className="mb-6 h-[420px] w-full object-cover"
+            className="psy-still mb-6 h-[420px] w-full object-cover"
             src={bandBio.photos[0]}
             alt="Le groupe en concert"
           />
@@ -17,7 +17,7 @@ function AboutSection() {
         {bandBio.columns.map((paragraphs, index) => (
           <div key={index}>
             <img
-              className="mb-6 h-[420px] w-full object-cover"
+              className="psy-still mb-6 h-[420px] w-full object-cover"
               src={bandBio.photos[index + 1]}
               alt="Le groupe en concert"
             />

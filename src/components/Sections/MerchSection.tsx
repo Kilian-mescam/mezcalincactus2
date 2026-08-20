@@ -42,7 +42,7 @@ function MerchSection() {
               <div className="absolute left-1/2 top-1/2 h-[6%] w-[6%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-bg" />
             </div>
             <img
-              className="relative z-10 aspect-square w-full object-cover shadow-soft"
+              className="psy-still relative z-10 aspect-square w-full object-cover shadow-soft"
               src={albumCover}
               alt={`Pochette de l'album ${album.title}`}
             />
@@ -114,7 +114,7 @@ function MerchSection() {
             {gridItems.map((item) => (
               <div className="flex flex-col border border-white/10 p-5 transition-colors hover:border-white/25" key={item.id}>
                 <img
-                  className="aspect-square w-full object-cover"
+                  className="psy-still aspect-square w-full object-cover"
                   src={item.image}
                   alt={item.name}
                 />
