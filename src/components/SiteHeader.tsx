@@ -23,7 +23,7 @@ function SiteHeader() {
           <a className={navLinkClasses} href="#tour">Tour</a>
           <a className={navLinkClasses} href="#merch">Merch</a>
           <a className={navLinkClasses} href="#videos">Vidéos</a>
-          <a className={navLinkClasses} href="#about">About</a>
+          <a className={navLinkClasses} href="#bio">Bio</a>
           <a className={navLinkClasses} href="#contact">Contact</a>
         </nav>
       </div>

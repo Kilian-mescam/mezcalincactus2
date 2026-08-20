@@ -3,7 +3,7 @@ import { bandBio } from '../../data/bio'
 
 function AboutSection() {
   return (
-    <Section id="about" background="#242424" hideTitle>
+    <Section id="bio" background="#242424" hideTitle>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div>
           <img
@@ -11,7 +11,7 @@ function AboutSection() {
             src={bandBio.photos[0]}
             alt="Le groupe en concert"
           />
-          <h2 className="text-[clamp(2rem,4vw,3.5rem)]">About</h2>
+          <h2 className="text-[clamp(2rem,4vw,3.5rem)]">Bio</h2>
         </div>
 
         {bandBio.columns.map((paragraphs, index) => (
