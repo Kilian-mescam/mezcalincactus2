@@ -143,6 +143,29 @@ function AdminPage() {
     loadCommandes()
   }
 
+  async function handleTogglePaye(commande: Commande) {
+    const { error } = await supabase.from('commandes').update({ paye: !commande.paye }).eq('id', commande.id)
+
+    if (error) {
+      setCommandeMessage(`Modification impossible : ${error.message}`)
+      return
+    }
+
+    loadCommandes()
+  }
+
+  async function handleDeleteCommande(id: number) {
+    const { error } = await supabase.from('commandes').delete().eq('id', id)
+
+    if (error) {
+      setCommandeMessage(`Suppression impossible : ${error.message}`)
+      return
+    }
+
+    setCommandeMessage('Commande supprimée.')
+    loadCommandes()
+  }
+
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setAuthError('')
@@ -524,13 +547,14 @@ function AdminPage() {
                 <th className="border-b border-white/10 px-[0.6rem] py-[0.9rem] text-left text-[0.72rem] uppercase tracking-[0.12em] text-white/70">Adresse</th>
                 <th className="border-b border-white/10 px-[0.6rem] py-[0.9rem] text-left text-[0.72rem] uppercase tracking-[0.12em] text-white/70">Montant</th>
                 <th className="border-b border-white/10 px-[0.6rem] py-[0.9rem] text-left text-[0.72rem] uppercase tracking-[0.12em] text-white/70">Statut</th>
+                <th className="border-b border-white/10 px-[0.6rem] py-[0.9rem] text-left text-[0.72rem] uppercase tracking-[0.12em] text-white/70">Payé</th>
                 <th className="border-b border-white/10 px-[0.6rem] py-[0.9rem] text-left text-[0.72rem] uppercase tracking-[0.12em] text-white/70">Actions</th>
               </tr>
             </thead>
             <tbody>
               {commandes.length === 0 ? (
                 <tr>
-                  <td className="px-[0.6rem] py-[1.6rem] text-admin-cream/50" colSpan={7}>
+                  <td className="px-[0.6rem] py-[1.6rem] text-admin-cream/50" colSpan={8}>
                     Aucune commande pour le moment.
                   </td>
                 </tr>
@@ -554,13 +578,36 @@ function AdminPage() {
                       </span>
                     </td>
                     <td className="border-b border-white/10 px-[0.6rem] py-[0.9rem] align-top">
-                      <button
-                        type="button"
-                        className="font-body inline-flex items-center justify-center whitespace-nowrap border bg-white/70 px-3 py-[0.45rem] text-[0.7rem] font-bold uppercase tracking-[0.06em] text-black transition-colors hover:border-admin-orange/50 hover:text-admin-orange"
-                        onClick={() => handleToggleStatut(commande)}
-                      >
-                        {commande.statut === 'expediee' ? 'Marquer nouvelle' : 'Marquer expédiée'}
-                      </button>
+                      <label className="flex items-center gap-2" aria-label="Commande payée">
+                        <input
+                          type="checkbox"
+                          className="size-4 accent-admin-orange"
+                          checked={commande.paye}
+                          onChange={() => handleTogglePaye(commande)}
+                        />
+                      </label>
+                    </td>
+                    <td className="border-b border-white/10 px-[0.6rem] py-[0.9rem] align-top">
+                      <div className="flex flex-row gap-2">
+                        <button
+                          type="button"
+                          className="font-body inline-flex items-center justify-center whitespace-nowrap border bg-white/70 px-3 py-[0.45rem] text-[0.7rem] font-bold uppercase tracking-[0.06em] text-black transition-colors hover:border-admin-orange/50 hover:text-admin-orange"
+                          onClick={() => handleToggleStatut(commande)}
+                        >
+                          {commande.statut === 'expediee' ? 'Marquer nouvelle' : 'Marquer expédiée'}
+                        </button>
+                        <button
+                          type="button"
+                          className={dangerBtnClasses}
+                          onClick={() => {
+                            if (window.confirm('Supprimer définitivement cette commande ?')) {
+                              handleDeleteCommande(commande.id)
+                            }
+                          }}
+                        >
+                          Supprimer
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))

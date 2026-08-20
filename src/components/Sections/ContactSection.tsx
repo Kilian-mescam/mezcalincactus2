@@ -8,10 +8,10 @@ function ContactSection() {
           
           <p className="mt-4 text-[1.25rem] font-bold text-text">mezcalincactus@gmail.com</p>
           <a
-            className="mt-6 inline-flex items-center justify-center bg-accent px-[1.4rem] py-[0.9rem] font-extrabold text-text transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-accent-3"
+            className="font-display mt-6 inline-flex items-center justify-center bg-accent px-[1.4rem] py-[0.9rem] font-extrabold text-text transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-accent-3"
             href="mailto:mezcalincactus@gmail.com"
           >
-            Écrire au groupe
+            ÉCRIRE AU GROUPE
           </a>
         </div>
       </div>

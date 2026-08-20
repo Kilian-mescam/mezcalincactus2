@@ -32,6 +32,7 @@ export interface Commande {
   adresse: string
   montant: number
   statut: CommandeStatut
+  paye: boolean
 }
 
 export interface MerchItem {

@@ -38,3 +38,6 @@ alter table public.commandes enable row level security;
 
 -- Optionnel : index pour trier les commandes par date.
 create index commandes_created_at_idx on public.commandes (created_at);
+
+-- Migration : ajout du suivi de paiement (à exécuter dans le SQL editor Supabase).
+alter table public.commandes add column if not exists paye boolean not null default false;

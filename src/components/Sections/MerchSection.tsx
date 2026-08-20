@@ -84,7 +84,7 @@ function MerchSection() {
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <button
                 type="button"
-                className="font-body inline-flex items-center justify-center bg-white px-[1.4rem] py-[0.9rem] font-extrabold uppercase tracking-[0.06em] text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-accent-3 hover:text-white"
+                className="font-display inline-flex items-center justify-center bg-white px-[1.4rem] py-[0.9rem] font-extrabold uppercase tracking-[0.06em] text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-accent-3 hover:text-white"
                 onClick={() => openOrder('vinyle')}
               >
                 Commander le vinyle
@@ -123,7 +123,7 @@ function MerchSection() {
                   <p className="mt-1">{item.prix}€</p>
                   <button
                     type="button"
-                    className="font-body mt-5 inline-flex items-center justify-center self-stretch border border-white/20 px-4 py-[0.7rem] text-[0.75rem] font-bold uppercase tracking-[0.08em] text-text-soft transition-colors hover:border-white hover:text-white"
+                    className="font-display mt-5 inline-flex items-center justify-center self-stretch border border-white/20 px-4 py-[0.7rem] text-[0.75rem] font-bold uppercase tracking-[0.08em] text-text-soft transition-colors hover:border-white hover:text-white"
                     onClick={() => openOrder(item.id)}
                   >
                     Commander

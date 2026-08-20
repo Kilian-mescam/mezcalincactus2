@@ -97,8 +97,14 @@ function OrderModal({ onClose, initialItemId }: OrderModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-10">
-      <div className="w-full max-w-[680px] max-h-full overflow-y-auto bg-[#1a1a1a] p-8 shadow-soft">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-10"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-[680px] max-h-full overflow-y-auto bg-[#1a1a1a] p-8 shadow-soft"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="mb-6 flex items-start justify-between gap-4">
           <h3 className="font-body text-[1.5rem] font-bold normal-case tracking-normal text-white">Commander</h3>
           <button type="button" className="text-text-soft hover:text-accent-3" onClick={onClose} aria-label="Fermer">
