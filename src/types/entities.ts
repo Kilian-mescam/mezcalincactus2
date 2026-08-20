@@ -62,6 +62,7 @@ export interface SocialLink {
 export interface BandConfig {
   name: string
   paypalUsername: string
+  linktreeUrl: string
   socialLinks: SocialLink[]
 }
 

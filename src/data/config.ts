@@ -5,6 +5,7 @@ export const bandConfig: BandConfig = {
   name: 'Mezcal in Cactus',
   // Pseudo paypal.me (partie après paypal.me/).
   paypalUsername: 'MezcalinCactus',
+  linktreeUrl: 'https://linktr.ee/mezcalincactus',
   socialLinks: [
     { label: 'Instagram', url: 'https://instagram.com/mezcalincactus' },
     { label: 'YouTube', url: 'https://youtube.com/@mezcalincactus' },

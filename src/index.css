@@ -16,9 +16,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Lostar';
+  src: url('./assets/font/Lostar.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: 'Adieu', 'Segoe UI', sans-serif;
   --font-body: 'Gotham Light', 'Segoe UI', sans-serif;
+  --font-lostar: 'Lostar', 'Segoe UI', sans-serif;
 
   --color-bg: #170f0a;
   --color-panel: #1f150d;
@@ -101,6 +110,126 @@ button {
   a {
     color: inherit;
     text-decoration: none;
+  }
+}
+
+.logo-trip {
+  isolation: isolate;
+}
+
+.logo-trip__img {
+  transition: filter 0.4s ease;
+  will-change: transform, filter;
+}
+
+.logo-trip__ghost {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: var(--logo-url);
+  mask-image: var(--logo-url);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo-trip__ghost--a {
+  background: #ff5e00;
+}
+
+.logo-trip__ghost--b {
+  background: #39ff6a;
+}
+
+.logo-trip:hover .logo-trip__img {
+  animation:
+    logo-trip-wobble 2.6s ease-in-out infinite,
+    logo-trip-glow 3s linear infinite;
+}
+
+.logo-trip:hover .logo-trip__ghost--a {
+  opacity: 0.9;
+  animation: logo-trip-ghost-a 1.4s ease-in-out infinite;
+}
+
+.logo-trip:hover .logo-trip__ghost--b {
+  opacity: 0.22;
+  animation: logo-trip-ghost-b 1.7s ease-in-out infinite;
+}
+
+@keyframes logo-trip-wobble {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg) skew(0deg, 0deg);
+  }
+  20% {
+    transform: scale(1.04) rotate(-2deg) skew(-2deg, 1deg);
+  }
+  40% {
+    transform: scale(0.98) rotate(2deg) skew(2deg, -1deg);
+  }
+  60% {
+    transform: scale(1.05) rotate(-1deg) skew(-1deg, 2deg);
+  }
+  80% {
+    transform: scale(0.97) rotate(1deg) skew(1deg, -2deg);
+  }
+}
+
+@keyframes logo-trip-glow {
+  0% {
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 14px #ff7a1a) drop-shadow(0 0 26px #ffd23f)
+      saturate(1.4);
+  }
+  25% {
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 18px #ffb347) drop-shadow(0 0 30px #ff7a1a)
+      saturate(1.6);
+  }
+  50% {
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px #ff9d3d) drop-shadow(0 0 22px #39ff6a)
+      saturate(1.5);
+  }
+  75% {
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 18px #ffb347) drop-shadow(0 0 26px #ff7a1a)
+      saturate(1.6);
+  }
+  100% {
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 14px #ff7a1a) drop-shadow(0 0 26px #ffd23f)
+      saturate(1.4);
+  }
+}
+
+@keyframes logo-trip-ghost-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(7px, -5px) scale(1.02);
+  }
+}
+
+@keyframes logo-trip-ghost-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-11px, 8px) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-trip:hover .logo-trip__img,
+  .logo-trip:hover .logo-trip__ghost--a,
+  .logo-trip:hover .logo-trip__ghost--b {
+    animation: none;
   }
 }
 
