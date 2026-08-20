@@ -1,8 +1,40 @@
 import { useState, type FormEvent } from 'react'
+import emailjs from '@emailjs/browser'
 import { supabase } from '../lib/supabase'
 import { merchItems } from '../data/merch'
 import { bandConfig } from '../data/config'
 import type { CommandeItem } from '../types/entities'
+
+function buildItemsHtml(items: CommandeItem[]): string {
+  return items
+    .map(
+      (item) => `
+        <tr>
+          <td style="padding:4px 0;">${item.produitNom}${item.taille ? ` (${item.taille})` : ''} × ${item.quantite}</td>
+          <td style="padding:4px 0;text-align:right;white-space:nowrap;">${(item.prixUnitaire * item.quantite).toFixed(2)} €</td>
+        </tr>`,
+    )
+    .join('')
+}
+
+async function sendOrderAlert(params: { nom: string; email: string; adresse: string; montant: number; items: CommandeItem[] }) {
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        nom: params.nom,
+        email: params.email,
+        adresse: params.adresse,
+        montant: params.montant.toFixed(2),
+        items_html: buildItemsHtml(params.items),
+      },
+      { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY },
+    )
+  } catch (emailError) {
+    console.error("Échec de l'envoi de l'alerte email de commande :", emailError)
+  }
+}
 
 const labelClasses = 'font-body text-[0.78rem] font-bold uppercase tracking-[0.14em] text-white'
 const inputClasses =
@@ -92,6 +124,8 @@ function OrderModal({ onClose, initialItemId }: OrderModalProps) {
       setError(`Impossible d'enregistrer la commande : ${insertError.message}`)
       return
     }
+
+    await sendOrderAlert({ nom: nom.trim(), email: email.trim(), adresse, montant, items: chosenItems })
 
     window.location.href = `https://paypal.me/${encodeURIComponent(bandConfig.paypalUsername)}/${montant}EUR`
   }
