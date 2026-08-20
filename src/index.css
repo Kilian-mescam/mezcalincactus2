@@ -288,9 +288,9 @@ button {
 
 .psy-ring__text {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.06em;
   fill: #ffffff;
   text-transform: uppercase;
 }
@@ -378,12 +378,12 @@ html.psychedelic h3 {
   }
 
   html.psychedelic img:not(.logo-trip__img) {
-    animation: psy-hue-cycle 4s linear infinite;
+    animation: psy-hue-cycle-img 4s linear infinite;
   }
 
   html.psychedelic img:not(.logo-trip__img):not(.psy-still) {
     animation:
-      psy-hue-cycle 4s linear infinite,
+      psy-hue-cycle-img 4s linear infinite,
       psy-warp 3.4s ease-in-out infinite;
   }
 
@@ -526,6 +526,15 @@ html.psychedelic h3 {
   }
   to {
     filter: hue-rotate(360deg) saturate(1.35);
+  }
+}
+
+@keyframes psy-hue-cycle-img {
+  from {
+    filter: hue-rotate(0deg) saturate(1.6) contrast(1.35);
+  }
+  to {
+    filter: hue-rotate(360deg) saturate(1.6) contrast(1.35);
   }
 }
 

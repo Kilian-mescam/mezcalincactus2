@@ -1,6 +1,6 @@
 import { usePsychedelicMode } from '../context/PsychedelicModeContext'
 
-const RING_LABEL = 'PSYCHEDELIC MODE • '.repeat(3)
+const RING_LABEL = 'PSYCHEDELIC MODE • '.repeat(2)
 
 function PsychedelicToggle() {
   const { enabled, toggle } = usePsychedelicMode()
@@ -9,7 +9,7 @@ function PsychedelicToggle() {
     <div className="psy-toggle-wrap fixed bottom-6 right-6 z-50 flex h-[150px] w-[150px] items-center justify-center">
       <svg className="psy-ring" viewBox="0 0 200 200" aria-hidden="true">
         <defs>
-          <path id="psy-ring-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+          <path id="psy-ring-path" d="M100,100 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0" />
         </defs>
         <text className="psy-ring__text">
           <textPath href="#psy-ring-path">{RING_LABEL}</textPath>
